@@ -13,23 +13,6 @@ import "react-dates/lib/css/_datepicker.css";
 
 const store = configureStore();
 
-store.subscribe(() => {
-  const state = store.getState();
-  console.log(getVisibleExpenses(state.expenses, state.filters));
-});
-
-store.dispatch(
-  addExpense({ description: "Water bill", amount: 200, createdAt: 1000 })
-);
-store.dispatch(
-  addExpense({ description: "Gas bill", amount: 300, createdAt: 1200 })
-);
-store.dispatch(
-  addExpense({ description: "Rent", amount: 1000, createdAt: 1040 })
-);
-
-// store.dispatch(setTextFilter("bill"));
-// store.dispatch(setTextFilter("water"));
 store.dispatch(sortByAmount());
 
 const jsx = (
