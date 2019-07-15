@@ -1,0 +1,19 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+const Header = () => (
+  <header>
+    <h1>Expensify</h1>
+    <NavLink to="/" exact={true} activeClassName="is-active">
+      Dashboard
+    </NavLink>
+    <NavLink to="/create" activeClassName="is-active">
+      Create
+    </NavLink>
+    <NavLink to="/edit/1" activeClassName="is-active">
+      Edit
+    </NavLink>
+  </header>
+);
+
+export default Header;
