@@ -14,7 +14,6 @@ test("should render correctly with 2 expenses", () => {
   const wrapper = shallow(
     <ExpensesSummary expenseCount={2} expenseTotal={13034} />
   );
-  u;
 
   expect(wrapper).toMatchSnapshot();
 });
