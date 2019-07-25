@@ -6,12 +6,12 @@ import { startEditExpense, startRemoveExpense } from "../actions/expenses";
 export class EditExpensePage extends React.Component {
   onSubmit = expense => {
     this.props.startEditExpense(this.props.expenseToEdit.id, expense);
-    this.props.history.push("/"); // go to index page
+    this.props.history.push("/dashboard"); // go to index page
   };
 
   onRemove = () => {
     this.props.startRemoveExpense({ id: this.props.expenseToEdit.id });
-    this.props.history.push("/"); // go to index page
+    this.props.history.push("/dashboard"); // go to index page
   };
 
   render() {

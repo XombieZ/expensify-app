@@ -86,9 +86,9 @@ export const startSetExpenses = () => {
             id: expenseSnapshot.key,
             ...expenseSnapshot.val()
           });
-
-          dispatch(setExpenses(expensesToSet));
         });
+
+        dispatch(setExpenses(expensesToSet));
       });
   };
 };

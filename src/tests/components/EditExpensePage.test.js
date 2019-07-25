@@ -30,7 +30,7 @@ test("should handle editExpense correctly", () => {
     createdAt: expenses[2].createdAt,
     note: expenses[2].note
   });
-  expect(history.push).toHaveBeenLastCalledWith("/");
+  expect(history.push).toHaveBeenLastCalledWith("/dashboard");
   expect(startEditExpense).toHaveBeenLastCalledWith(expenses[2].id, {
     description: expenses[2].description,
     amount: expenses[2].amount,
@@ -41,6 +41,6 @@ test("should handle editExpense correctly", () => {
 
 test("should handle removeExpense correctly", () => {
   wrapper.find("button").simulate("click");
-  expect(history.push).toHaveBeenLastCalledWith("/");
+  expect(history.push).toHaveBeenLastCalledWith("/dashboard");
   expect(startRemoveExpense).toHaveBeenLastCalledWith({ id: expenses[2].id });
 });
