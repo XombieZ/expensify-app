@@ -21,6 +21,10 @@ googleAuthProvider.setCustomParameters({
   prompt: "select_account"
 });
 
+facebookAuthProvider.setCustomParameters({
+  prompt: "select_account"
+});
+
 export {
   firebase,
   facebookAuthProvider,
