@@ -5,9 +5,9 @@ export const login = uid => ({
   uid
 });
 
-export const startLogin = () => {
+export const startLogin = authProvider => {
   return () => {
-    return firebase.auth().signInWithPopup(googleAuthProvider);
+    return firebase.auth().signInWithPopup(authProvider);
   };
 };
 

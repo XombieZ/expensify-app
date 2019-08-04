@@ -1,17 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
+import ModalWrapper from "./ModalWrapper";
+import ConfirmationModal from "./modals/ConfirmationModal";
 import { startEditExpense, startRemoveExpense } from "../actions/expenses";
 
 export class EditExpensePage extends React.Component {
+  state = { isRemoveModalHidden: true, isSaveModalHidden: true };
+
+  setRemoveModalHidden = isHidden =>
+    this.setState({ isRemoveModalHidden: isHidden });
+
   onSubmit = expense => {
     this.props.startEditExpense(this.props.expenseToEdit.id, expense);
     this.props.history.push("/dashboard"); // go to index page
   };
 
-  onRemove = () => {
+  onRemoveModalConfirm = () => {
+    this.setRemoveModalHidden(true);
     this.props.startRemoveExpense({ id: this.props.expenseToEdit.id });
     this.props.history.push("/dashboard"); // go to index page
+  };
+
+  onRemoveModalCancel = () => {
+    this.setState({ isRemoveModalHidden: true });
+    console.log("Modal: cancel");
   };
 
   render() {
@@ -27,10 +40,20 @@ export class EditExpensePage extends React.Component {
             expenseToEdit={this.props.expenseToEdit}
             onSubmit={this.onSubmit}
           />
-          <button className="button button--secondary" onClick={this.onRemove}>
+          <button
+            className="button button--secondary"
+            onClick={() => this.setRemoveModalHidden(false)}
+          >
             Remove Expense
           </button>
         </div>
+        <ModalWrapper isHidden={this.state.isRemoveModalHidden}>
+          <ConfirmationModal
+            message="Are you sure you want to delete current expense ?"
+            onConfirm={this.onRemoveModalConfirm}
+            onCancel={this.onRemoveModalCancel}
+          />
+        </ModalWrapper>
       </div>
     );
   }
